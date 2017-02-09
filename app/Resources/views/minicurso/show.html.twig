@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Minicurso</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ miniCurso.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ miniCurso.nome }}</td>
+            </tr>
+            <tr>
+                <th>Cargahoraria</th>
+                <td>{{ miniCurso.cargaHoraria }}</td>
+            </tr>
+            <tr>
+                <th>Dias</th>
+                <td>{{ miniCurso.dias }}</td>
+            </tr>
+            <tr>
+                <th>Horario</th>
+                <td>{% if miniCurso.horario %}{{ miniCurso.horario|date('H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('minicurso_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('minicurso_edit', { 'id': miniCurso.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

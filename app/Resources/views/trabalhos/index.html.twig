@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trabalhos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descrissao</th>
+                <th>Diretorio</th>
+                <th>Minicursoid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trabalho in trabalhos %}
+            <tr>
+                <td><a href="{{ path('trabalhos_show', { 'id': trabalho.id }) }}">{{ trabalho.id }}</a></td>
+                <td>{{ trabalho.titulo }}</td>
+                <td>{{ trabalho.descrissao }}</td>
+                <td>{{ trabalho.diretorio }}</td>
+                <td>{{ trabalho.minicursoId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trabalhos_show', { 'id': trabalho.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trabalhos_edit', { 'id': trabalho.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trabalhos_new') }}">Create a new trabalho</a>
+        </li>
+    </ul>
+{% endblock %}

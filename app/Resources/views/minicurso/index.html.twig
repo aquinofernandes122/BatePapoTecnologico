@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Minicursos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cargahoraria</th>
+                <th>Dias</th>
+                <th>Horario</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for miniCurso in miniCursos %}
+            <tr>
+                <td><a href="{{ path('minicurso_show', { 'id': miniCurso.id }) }}">{{ miniCurso.id }}</a></td>
+                <td>{{ miniCurso.nome }}</td>
+                <td>{{ miniCurso.cargaHoraria }}</td>
+                <td>{{ miniCurso.dias }}</td>
+                <td>{% if miniCurso.horario %}{{ miniCurso.horario|date('H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('minicurso_show', { 'id': miniCurso.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('minicurso_edit', { 'id': miniCurso.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('minicurso_new') }}">Create a new miniCurso</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <h1>Aluno creation</h1>
+
+        {{ form_start(form) }}
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form_label(form.matricula) }}
+                    {{ form_widget(form.matricula) }}
+                    <span class="alert-danger"> {{ form_errors(form.matricula) }}</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form_label(form.nome) }}
+                    {{ form_widget(form.nome) }}
+                    <span class="alert-danger"> {{ form_errors(form.nome) }}</span>
+                </div>
+            </div>
+            {{ form_widget(form) }}
+            <input class="btn btn-success" type="submit" value="Salvar"/>
+            <a class="btn btn-info" href="{{ path('aluno_index') }}">Voltar</a>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

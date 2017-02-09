@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <h1>Alunos list</h1>
+        <a class="btn btn-success pull-right" href="{{ path('aluno_new') }}">Novo aluno</a>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <td><a href="{{ path('aluno_show', { 'id': aluno.id }) }}">{{ aluno.id }}</a></td>
+                    <td>{{ aluno.matricula }}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>
+                        <ul>
+                            <a class="btn btn-info" href="{{ path('aluno_edit', { 'id': aluno.id }) }}">Editar</a>
+                            <a class="btn btn-danger" href="{{ path('aluno_delete', { 'id': aluno.id }) }}">Excluir</a>
+                        </ul>
+                    </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+            </table>
+    <</div>
+
+{% endblock %}

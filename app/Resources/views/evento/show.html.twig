@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Evento</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evento.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ evento.nome }}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ evento.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Datahora</th>
+                <td>{% if evento.dataHora %}{{ evento.dataHora|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Local</th>
+                <td>{{ evento.local }}</td>
+            </tr>
+            <tr>
+                <th>Descrissão</th>
+                <td>{{ evento.descrissão }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ evento.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Minicursoid</th>
+                <td>{{ evento.minicursoId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('evento_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('evento_edit', { 'id': evento.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
